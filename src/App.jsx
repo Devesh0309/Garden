@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, Flower2, Sparkles, Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import RoseDay from './seventhFeb';
 import PurposeDay from './eightthFeb';
+import ChocolateDay from './ninethFeb';
 
 // --- LOGIN COMPONENT ---
 const Login = ({ onLoginSuccess }) => {
@@ -15,7 +16,7 @@ const Login = ({ onLoginSuccess }) => {
     // Logic: UPSC 2023/24 context: "Which one of the following is the best description of 'Mila', 'Sagar'..." 
     // Or a classic one: "What is the capital of Ukraine?" (Common in recent exams)
     // For this logic, let's use a specific recent UPSC-style question.
-    const isUpscCorrect = upscAnswer.trim().toLowerCase() === 'hampi'; 
+    const isUpscCorrect = upscAnswer.trim().toLowerCase() === 'bronze'; 
     const isCmsCorrect = cmsAnswer.trim().toLowerCase() === 'bakribazar';
 
     if (isUpscCorrect && isCmsCorrect) {
@@ -50,7 +51,7 @@ const Login = ({ onLoginSuccess }) => {
             {/* UPSC Question */}
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">
-                UPSC PYQ: Site of Vijayanagara Empire?
+                UPSC PYQ: The famous female figurine known as ‘Dancing Girl’, found at Mohenjo-daro, is made of?
               </label>
               <input 
                 type="text"
@@ -100,6 +101,7 @@ const App = () => {
   
   if (view === 'rose') return <RoseDay onBack={() => setView('hub')} />;
   if (view === 'purpose') return <PurposeDay onBack={() => setView('hub')} />;
+  if (view === 'chocolate') return <ChocolateDay onBack={() => setView('hub')} />;
 
   return (
     <div className="min-h-screen bg-[#fffafa] flex flex-col items-center justify-center p-6 font-sans">
@@ -113,7 +115,7 @@ const App = () => {
         <p className="text-slate-500 mt-4 font-medium">Pick a chapter to begin our journey.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
         {/* Rose Day Card */}
         <button 
           onClick={() => setView('rose')}
@@ -147,6 +149,24 @@ const App = () => {
           <p className="text-rose-400 text-sm mt-2 uppercase tracking-widest font-bold">February 8th • Purpose Day</p>
           <p className="text-slate-500 mt-4 leading-relaxed">
             Navigating the obstacles of distance and time to deliver a heart.
+          </p>
+        </button>
+
+        {/* Chocolate Day Card */}
+        <button 
+          onClick={() => setView('chocolate')}
+          className="group relative bg-white border border-rose-100 p-8 rounded-[3rem] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all text-left overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <Heart size={120} />
+          </div>
+          <div className="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-700 group-hover:text-white transition-colors">
+            <Heart size={28} />
+          </div>
+          <h2 className="text-2xl font-black text-slate-800">Our Love Recipe</h2>
+          <p className="text-amber-700 text-sm mt-2 uppercase tracking-widest font-bold">February 9th • Chocolate Day</p>
+          <p className="text-slate-500 mt-4 leading-relaxed">
+            A chocolate made from the ingredients of our beautiful journey together.
           </p>
         </button>
       </div>
